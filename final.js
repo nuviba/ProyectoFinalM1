@@ -21,7 +21,38 @@ togBt.addEventListener('click', function () {
   document.getElementById('sidebar').classList.toggle('active');
 });
 
-function searchByCategory (tipo){
+function searchByCategory (tipo){ 
+    if (localStorage.getItem('dataZelda')!=null){
+        console.log("odd");
+        data = JSON.parse(localStorage.getItem('dataZelda'))
+        let catSelect=document.getElementById("selectCategory").value;
+            let catObject;
+            
+            if(catSelect=="creatures-food"){
+                catObject=data.data.creatures.food;
+            }
+            else if(catSelect=="creatures-non-food"){
+                catObject=data.data.creatures.non_food;
+            }
+            else{
+                catObject=data.data[catSelect];
+            }
+            document.getElementById("templateCard").innerHTML="";
+    switch(tipo){
+        case `name`:
+            searchByName(catObject);
+            break;
+        case `location`:
+            searchByLoc(catObject);
+            break;
+        case `description`:
+            searchByDes(catObject);
+            break;
+        default:
+
+    }
+}
+    else{
     fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
         return respuesta.json()
         })
@@ -49,11 +80,11 @@ function searchByCategory (tipo){
         case `description`:
             searchByDes(catObject);
             break;
-        default:
-
-        
+        default:  
     }
+    localStorage.setItem('dataZelda',JSON.stringify(data));
 })
+    }
 }
 
 function searchByName(lista){
@@ -88,27 +119,52 @@ function searchByDes(lista){
 return 1;}
 
 function allFromCategory (){
-    fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
-        return respuesta.json()
-        })
-        .then(function cogerData(data){
+        if (localStorage.getItem('dataZelda')!=null){
+            //console.log(localStorage.getItem('dataZelda'));
+            data = JSON.parse(localStorage.getItem('dataZelda'));
             let catSelect=document.getElementById("selectCategory").value;
-            let catObject;
-            
-            if(catSelect=="creatures-food"){
-                catObject=data.data.creatures.food;
-            }
-            else if(catSelect=="creatures-non-food"){
-                catObject=data.data.creatures.non_food;
-            }
-            else{
-                catObject=data.data[catSelect];
-            }
-            document.getElementById("templateCard").innerHTML="";
+                let catObject;
+                
+                if(catSelect=="creatures-food"){
+                    catObject=data.data.creatures.food;
+                }
+                else if(catSelect=="creatures-non-food"){
+                    catObject=data.data.creatures.non_food;
+                }
+                else{
+                    catObject=data.data[catSelect];
+                }
+                document.getElementById("templateCard").innerHTML="";
             for (let i=0;i<catObject.length;i++){
                 templateCard(i, catObject[i]);
             }
-        })
+    
+        }
+    
+        else{
+        fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
+            return respuesta.json()
+            })
+            .then(function cogerData(data){
+                let catSelect=document.getElementById("selectCategory").value;
+                let catObject;
+                
+                if(catSelect=="creatures-food"){
+                    catObject=data.data.creatures.food;
+                }
+                else if(catSelect=="creatures-non-food"){
+                    catObject=data.data.creatures.non_food;
+                }
+                else{
+                    catObject=data.data[catSelect];
+                }
+                document.getElementById("templateCard").innerHTML="";
+            for (let i=0;i<catObject.length;i++){
+                templateCard(i, catObject[i]);
+            }
+        localStorage.setItem('dataZelda',JSON.stringify(data));
+    })
+        }
 
 };
 
@@ -174,5 +230,8 @@ function addFav(id){
 }
 
 document.getElementById('templateFavs').innerHTML+=localStorage.getItem('favs');
+
+
+
 
 
