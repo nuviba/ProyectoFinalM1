@@ -93,7 +93,6 @@ main {
   width: 30px;
   height: 30px;
   cursor: pointer;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
 #templateCard {
@@ -256,6 +255,13 @@ footer {
 }
 #favs h3 {
   font-size: xx-large;
+}
+#butReset {
+  color: #051729;
+  background-color: #ba9b63;
+  border: 2px solid #051729;
+  cursor: pointer;
+  margin-bottom: 50px;
 }
 
 #mapInt {

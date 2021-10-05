@@ -21,6 +21,7 @@ togBt.addEventListener('click', function () {
   document.getElementById('sidebar').classList.toggle('active');
 });
 
+//function para obtener el array de objetos de la api
 function searchByCategory (tipo){ 
     if (localStorage.getItem('dataZelda')!=null){
         console.log("odd");
@@ -87,14 +88,33 @@ function searchByCategory (tipo){
     }
 }
 
+
+function searchByCategory (tipo){ 
+    catObject = fetchNdSave()
+    document.getElementById("templateCard").innerHTML="";
+    switch(tipo){
+        case `name`:
+            searchByName(catObject);
+            break;
+        case `location`:
+            searchByLoc(catObject);
+            break;
+        case `description`:
+            searchByDes(catObject);
+            break;
+        default:
+
+    }
+}
+    
+
 function searchByName(lista){
     buscar=document.getElementById("searchNam").value;
     for (let i=0;i<lista.length;i++){
         if(lista[i].name.toLowerCase().includes(buscar.toLowerCase())){
             templateCard(i,lista[i])}
-    }
-    
-return 1;}
+    }  
+}
 
 function searchByLoc(lista){
     buscar=document.getElementById("searchLoc").value;
@@ -108,7 +128,7 @@ function searchByLoc(lista){
             }           
             }
         } 
-return 1;}
+}
 
 function searchByDes(lista){
     buscar=document.getElementById("searchDes").value;
@@ -116,57 +136,59 @@ function searchByDes(lista){
         if(lista[i].description.toLowerCase().includes(buscar.toLowerCase())){
             templateCard(i,lista[i])}
     }    
-return 1;}
+}
 
 function allFromCategory (){
-        if (localStorage.getItem('dataZelda')!=null){
-            //console.log(localStorage.getItem('dataZelda'));
-            data = JSON.parse(localStorage.getItem('dataZelda'));
-            let catSelect=document.getElementById("selectCategory").value;
-                let catObject;
-                
-                if(catSelect=="creatures-food"){
-                    catObject=data.data.creatures.food;
-                }
-                else if(catSelect=="creatures-non-food"){
-                    catObject=data.data.creatures.non_food;
-                }
-                else{
-                    catObject=data.data[catSelect];
-                }
-                document.getElementById("templateCard").innerHTML="";
-            for (let i=0;i<catObject.length;i++){
-                templateCard(i, catObject[i]);
+    if (localStorage.getItem('dataZelda')!=null){
+        //console.log(localStorage.getItem('dataZelda'));
+        data = JSON.parse(localStorage.getItem('dataZelda'));
+        let catSelect=document.getElementById("selectCategory").value;
+            let catObject;
+            
+            if(catSelect=="creatures-food"){
+                catObject=data.data.creatures.food;
             }
-    
-        }
-    
-        else{
-        fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
-            return respuesta.json()
-            })
-            .then(function cogerData(data){
-                let catSelect=document.getElementById("selectCategory").value;
-                let catObject;
-                
-                if(catSelect=="creatures-food"){
-                    catObject=data.data.creatures.food;
-                }
-                else if(catSelect=="creatures-non-food"){
-                    catObject=data.data.creatures.non_food;
-                }
-                else{
-                    catObject=data.data[catSelect];
-                }
-                document.getElementById("templateCard").innerHTML="";
-            for (let i=0;i<catObject.length;i++){
-                templateCard(i, catObject[i]);
+            else if(catSelect=="creatures-non-food"){
+                catObject=data.data.creatures.non_food;
             }
-        localStorage.setItem('dataZelda',JSON.stringify(data));
-    })
+            else{
+                catObject=data.data[catSelect];
+            }
+            document.getElementById("templateCard").innerHTML="";
+        for (let i=0;i<catObject.length;i++){
+            templateCard(i, catObject[i]);
         }
 
+    }
+
+    else{
+    fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
+        return respuesta.json()
+        })
+        .then(function cogerData(data){
+            let catSelect=document.getElementById("selectCategory").value;
+            let catObject;
+            
+            if(catSelect=="creatures-food"){
+                catObject=data.data.creatures.food;
+            }
+            else if(catSelect=="creatures-non-food"){
+                catObject=data.data.creatures.non_food;
+            }
+            else{
+                catObject=data.data[catSelect];
+            }
+            document.getElementById("templateCard").innerHTML="";
+        for (let i=0;i<catObject.length;i++){
+            templateCard(i, catObject[i]);
+        }
+    localStorage.setItem('dataZelda',JSON.stringify(data));
+})
+    }
+
 };
+    
+        
 
 function templateCard(id, objeto){
     
@@ -220,6 +242,7 @@ function templateCard(id, objeto){
 
 }
 
+
 //funcition localStorage (add/quit favs)
 
 function addFav(id){
@@ -228,10 +251,13 @@ function addFav(id){
     //localStorage.setItem('favs',dat)
     localStorage.favs+=dat;
 }
+function resetFav(){
+    localStorage.favs="";
+    location.reload();//https://tutobasico.com/actualizar-javascript/
+}
 
-document.getElementById('templateFavs').innerHTML+=localStorage.getItem('favs');
+if (localStorage.getItem('favs')!=null){document.getElementById('templateFavs').innerHTML+=localStorage.getItem('favs');
+}
+else{localStorage.favs="";
 
-
-
-
-
+}
