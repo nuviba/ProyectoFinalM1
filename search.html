@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Breath of the Wild</title>
+    <link rel="stylesheet" href="./final.css">
+    <link rel="shortcut icon" href="./img/zelda icon icon.png">
+
+</head>
+<body>
+    <header>
+        <div id=title>
+            <h1><b>-SEARCH-</b></h1>
+        </div>
+        <div id="sidebar">
+            <div class="toggle-button">
+              <span>&#9776;</span>
+              <p>Menu</p>
+            </div>
+            <ul>
+              <li>
+                <img src="./img/headerZelda.png" alt="Logo zelda" class="logo">
+              </li>
+              <li><a href="./fav.html">Home</a></li>
+              <li><a href="./search.html">Search</a></li>
+              <li><a href="./about.html">About</a></li>
+            </ul>
+          </div>
+        
+    </header>
+    <main>
+    <div id=search>
+            <label for="selectCategory" id=textInf><b>Select a category to perform the search:</b> </label>
+        <select name="selectCategory" onchange="allFromCategory()" id="selectCategory">
+            <option value="selectByCat">Select by categoy</option>
+            <option value="creatures-food">Creatures (food)</option>
+            <option value="creatures-non-food">Creatures (non-food)</option>
+            <option value="equipment">Equipment</option>
+            <option value="materials">Materials</option>
+            <option value="monsters">Monsters</option>
+            <option value="treasure">Treasure</option>
+        </select>
+      
+    <div> 
+        <input id="searchNam" oninput="searchByCategory(`name`)" type="text" placeholder="Filter by name" />    </div>
+    <div>
+        <input id="searchLoc" oninput="searchByCategory(`location`)" type="text" placeholder="Filter by location" />
+    </div>
+    <div>
+        <input id="searchDes" oninput="searchByCategory(`description`)" type="text" placeholder="Filter by description" />
+    </div>
+    </div>  
+    <div id=templateCard></div>
+    </main>
+    <footer>
+        <div class="sectContentfoot1">
+            <div id=intLink>
+                <h3><b><u>LINKS OF INTEREST</u></b></h3>
+                <ul>
+                    <li><a href="https://www.zelda.com/">Nitendo official site</a></li>
+                    <li><a href="https://www.polygon.com/zelda-breath-of-the-wild-guide-walkthrough">Polygon</a></li>
+                    <li><a href="https://vandal.elespanol.com/guias/guia-zelda-breath-of-the-wild">Vandal</a></li>
+                    <li><a href="https://www.zeldadungeon.net/breath-of-the-wild-interactive-map/">Interactive map</a></li>
+                </ul>
+            </div>
+            <div id=shareNDfollow>
+                
+                    <h3><b><u>SHARE & FOLLOW US</u></b></h3>
+                    <div id=divImg>
+                        <div id=imgSF>
+                            <img src="./img/fb2.png" alt="Facebook log">
+                            </div>
+                            <div id=imgSF>
+                            <img src="./img/insta.png" alt="Instagram log">
+                            </div>
+                            <div id=imgSF>
+                            <img src="./img/tw2.png" alt="Twitter log">
+                            </div>
+                    </div>
+                
+                    
+            </div>
+        </div>
+        <div class="sectContentfoot2">
+            <p>Copyright &#169 2021 - All Rights Reserved - Domain Name</p>
+        </div>
+    </footer>
+    
+</body>
+<script src="./final.js"></script>
+</html>

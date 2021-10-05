@@ -1,0 +1,297 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  border: solid #ba9b63;
+  border-radius: 10px;
+  background-color: #eee6d7b6;
+}
+
+/* fuente sidebar: https://www.youtube.com/watch?v=xJnxe3diEoo */
+#sidebar {
+  position: fixed;
+  width: 170px;
+  height: 100%;
+  background: #051729;
+  left: -170px;
+  transition: all 300ms linear;
+}
+
+#sidebar.active {
+  left: 0px;
+}
+
+#sidebar ul li {
+  color: rgba(230, 230, 230, 0.9);
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+  text-align: center;
+}
+#sidebar ul li a {
+  color: #ba9b63;
+  text-decoration: none;
+  font-family: fantasy;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  height: 90px;
+}
+
+#sidebar .toggle-button {
+  position: absolute;
+  left: 230px;
+  top: 20px;
+  cursor: pointer;
+  color: #051729;
+  background-color: #ba9b63;
+  border: 2px solid #051729;
+  display: flex;
+  align-items: center;
+  color: #051729;
+  font-family: fantasy;
+  height: 55px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sidebar .toggle-button span {
+  display: block;
+  width: 40px;
+  text-align: center;
+  font-size: 25px;
+  margin-left: 0px;
+}
+
+#title {
+  color: #ba9b63;
+  font-size: larger;
+  font-family: fantasy;
+  display: flex;
+  align-items: center;
+}
+#title img {
+  height: 50px;
+  width: 50px;
+  padding-bottom: 17px;
+}
+main {
+  background-image: url("./img/breathOfTheWild.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: max-content;
+  min-height: 800px;
+  border: solid white;
+  border-radius: 10px;
+}
+.className {
+  display: flex;
+}
+.className img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+#templateCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.card {
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px 10px;
+  align-items: center;
+  text-align: justify;
+  padding: 10px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.card h1 {
+  text-transform: capitalize;
+}
+footer {
+  font-family: fantasy;
+  justify-content: space-between;
+  border: solid #ba9b63;
+  border-radius: 10px;
+  background-color: #caba9bda;
+  color: white;
+}
+#intLink h3 {
+  padding-left: 43px;
+}
+
+#intLink ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+#intLink ul li a {
+  text-decoration: none;
+  border: groove;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  display: flex;
+}
+#intLink ul li a:hover {
+  color: #ba9b63;
+}
+.sectContentfoot1 {
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+  margin-left: 100px;
+}
+#shareNDfollow {
+  margin-right: 100px;
+}
+#divImg {
+  display: flex;
+  justify-content: space-between;
+}
+#imgSF img {
+  height: 60px;
+  cursor: pointer;
+}
+.sectContentfoot2 {
+  border-top: 1px groove #caba9bda;
+  text-align: center;
+}
+
+/* MAIN ABOUT */
+#textAbout {
+  border: solid #ba9b63;
+  border-radius: 10px;
+  margin-left: 150px;
+  margin-top: 50px;
+  width: 400px;
+  /*  margin-right: 800px;
+  margin-bottom: 50px; */
+  background-color: #fbeddfb2;
+  display: flex;
+  flex-wrap: wrap;
+}
+#textAbout p {
+  text-align: justify;
+  margin: 20px;
+  color: #624e29;
+  font-family: fantasy;
+  line-height: 25px;
+}
+#textAbout a {
+  color: #624e29;
+  font-family: fantasy;
+}
+
+/* MAIN SEARCH- SEARCH */
+#search {
+  margin: 15px;
+  margin-right: 200px;
+  margin-left: 25px;
+  display: flex;
+  background-color: #2a5988d5;
+  border: solid #2a5988d5;
+  justify-content: space-around;
+}
+#textInf {
+  margin-top: 10px;
+  color: #ba9b63;
+  font-family: fantasy;
+  font-size: x-large;
+}
+#selectCategory {
+  margin-top: 5px;
+  color: #051729;
+  font-family: fantasy;
+  height: 35px;
+}
+#searchNam {
+  margin-top: 5px;
+  color: #051729;
+  font-family: fantasy;
+  font-size: medium;
+  height: 35px;
+}
+#searchLoc {
+  margin-top: 5px;
+  color: #051729;
+  font-family: fantasy;
+  font-size: medium;
+  height: 35px;
+}
+#searchDes {
+  margin-top: 5px;
+  color: #051729;
+  font-family: fantasy;
+  font-size: medium;
+  height: 35px;
+}
+/* MAIN HOME */
+#templateFavs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#favs {
+  border: solid #ba9b63;
+  border-radius: 10px;
+  margin: 50px;
+  padding: 50px;
+  background-color: #fbeddfb2;
+  flex-wrap: wrap;
+  color: #ba9b63;
+  font-family: fantasy;
+  text-align: center;
+}
+#favs h3 {
+  font-size: xx-large;
+}
+
+#mapInt {
+  border: solid #ba9b63;
+  border-radius: 10px;
+  margin: 50px;
+  padding: 50px;
+  background-color: #fbeddfb2;
+  flex-wrap: wrap;
+  color: #ba9b63;
+  font-family: fantasy;
+  text-align: center;
+  font-size: xx-large;
+}
+
+#mapInt iframe {
+  width: 80%;
+  height: 600px;
+}
+
+/* layout for mobile
+ */
+@media only screen and (max-width: 600px) {
+  #textAbout {
+    margin-left: 0px;
+  }
+  .sectContentfoot1 {
+    flex-direction: column;
+  }
+  #mapInt iframe {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  #search {
+    flex-direction: column;
+  }
+}
