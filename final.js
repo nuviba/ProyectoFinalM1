@@ -21,6 +21,22 @@ togBt.addEventListener('click', function () {
   document.getElementById('sidebar').classList.toggle('active');
 });
 
+// Fuente para manejar el error de la API: https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91
+function handleResponse(response) {
+    return response.json()
+        .then((json) => {
+            if (!response.ok) {
+                const error = Object.assign({}, json, {
+                    status: response.status,
+                    statusText: response.statusText,
+                });
+
+                return Promise.reject(error);
+            }
+            return json;
+        });
+}
+
 function searchByCategory (tipo){ 
     if (localStorage.getItem('dataZelda')!=null){
         console.log("odd");
@@ -53,9 +69,7 @@ function searchByCategory (tipo){
     }
 }
     else{
-    fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
-        return respuesta.json()
-        })
+    fetch('https://botw-compendium.herokuapp.com/api/v2').then(handleResponse)
         .then(function cogerData(data){
             let catSelect=document.getElementById("selectCategory").value;
             let catObject;
@@ -83,6 +97,12 @@ function searchByCategory (tipo){
         default:  
     }
     localStorage.setItem('dataZelda',JSON.stringify(data));
+}).catch(error => {// Fuente para manejar el error de la API: https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91
+
+    // This error object will have the error from the server
+    // As well as the two additions we made earlier of the status and statusText
+
+    document.getElementById("templateCard").innerHTML=error;
 })
     }
 }
@@ -142,9 +162,7 @@ function allFromCategory (){
         }
     
         else{
-        fetch('https://botw-compendium.herokuapp.com/api/v2').then(function cogerRespuesta(respuesta){
-            return respuesta.json()
-            })
+        fetch('https://botw-compendium.herokuapp.com/api/v2').then(handleResponse)
             .then(function cogerData(data){
                 let catSelect=document.getElementById("selectCategory").value;
                 let catObject;
@@ -163,6 +181,12 @@ function allFromCategory (){
                 templateCard(i, catObject[i]);
             }
         localStorage.setItem('dataZelda',JSON.stringify(data));
+    }).catch(error => {
+
+        // This error object will have the error from the server
+        // As well as the two additions we made earlier of the status and statusText
+    
+        document.getElementById("templateCard").innerHTML=`<div class=errDiv><h1>${error}</h1><h2>Try it again later. Ganon is waiting for you!!</h2></div>`;
     })
         }
 

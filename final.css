@@ -301,3 +301,10 @@ footer {
     flex-direction: column;
   }
 }
+.errDiv {
+  background-color: blanchedalmond;
+  color: red;
+  font-size: large;
+  border: solid red;
+  border-radius: 10px;
+}
