@@ -7,9 +7,10 @@
     <title>Explore Breath of the Wild</title>
     <link rel="stylesheet" href="./final.css">
     <link rel="shortcut icon" href="./img/zelda icon icon.png">
-
 </head>
+
 <body>
+
     <header>
         <div id=title>
             <h1><b>-SEARCH-</b></h1>
@@ -28,11 +29,12 @@
               <li><a href="./about.html">About</a></li>
             </ul>
           </div>
-        
     </header>
+
     <main>
     <div id=search>
-            <label for="selectCategory" id=textInf><b>Select a category to perform the search:</b> </label>
+<!--         Menú dropdown con las diferentes categorías de items
+ -->    <label for="selectCategory" id=textInf><b>Select a category to perform the search:</b> </label>
         <select name="selectCategory" onchange="allFromCategory()" id="selectCategory">
             <option value="selectByCat">Select by categoy</option>
             <option value="creatures-food">Creatures (food)</option>
@@ -42,8 +44,8 @@
             <option value="monsters">Monsters</option>
             <option value="treasure">Treasure</option>
         </select>
-      
-    <div> 
+<!--       filtros por nombre, localización y descripción, la página se actualiza mientras se escribe por el uso del oninput
+ --><div> 
         <input id="searchNam" oninput="searchByCategory(`name`)" type="text" placeholder="Filter by name" />    </div>
     <div>
         <input id="searchLoc" oninput="searchByCategory(`location`)" type="text" placeholder="Filter by location" />
@@ -51,9 +53,11 @@
     <div>
         <input id="searchDes" oninput="searchByCategory(`description`)" type="text" placeholder="Filter by description" />
     </div>
-    </div>  
-    <div id=templateCard></div>
+    </div>
+<!--     div donde se mostrarán los resultados de búsqueda
+ --><div id=templateCard></div>
     </main>
+    
     <footer>
         <div class="sectContentfoot1">
             <div id=intLink>
